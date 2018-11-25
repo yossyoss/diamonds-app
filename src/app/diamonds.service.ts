@@ -1,5 +1,9 @@
 import { Injectable } from "@angular/core";
-import { HttpClient, HttpHeaders } from "@angular/common/http";
+import {
+  HttpClient,
+  HttpHeaders,
+  HttpUrlEncodingCodec
+} from "@angular/common/http";
 import { Observable, Subject } from "rxjs";
 @Injectable({
   providedIn: "root"
@@ -22,14 +26,16 @@ export class DiamondsService {
       }/findJewelryByManufacturer?manufacturerId=${manufacturerId}`
     );
   }
-  uploadVideo(jewelry, video) {
-    let headers = new HttpHeaders({
-      "Content-Type": "multipart/form-data"
-    });
-    let jewelry2 = "asdasd"; //JSON.stringify(jewelry);
-    let video2 = JSON.stringify(video);
+  uploadVideo(jewelry, file) {
+    console.log("uploading");
+
+    let headers = new HttpHeaders();
+    headers.append("Content-Type", "multipart/form-data");
+    let jewelry2 = JSON.stringify(jewelry);
+    jewelry2 = encodeURI(jewelry2);
     return this.http.post(
-      `${this.baseUrl}/addJewelry?jewelryDto=${jewelry2}&file=${video2}`,
+      `${this.baseUrl}/addJewelry?jewelryDto=${jewelry2}`,
+      file,
       { headers }
     );
   }

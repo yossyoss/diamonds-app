@@ -1,6 +1,6 @@
 import { Component, OnInit, ElementRef, Input, ViewChild } from "@angular/core";
 import { DiamondsService } from "../diamonds.service";
-
+import { ToastrService } from "ngx-toastr";
 @Component({
   selector: "app-add-video",
   templateUrl: "./add-video.component.html",
@@ -8,8 +8,13 @@ import { DiamondsService } from "../diamonds.service";
 })
 export class AddVideoComponent implements OnInit {
   model: any = {};
+  error: String;
+  success: String;
   @ViewChild("fileInput") inputEl: ElementRef;
-  constructor(private diamondsSerivse: DiamondsService) {}
+  constructor(
+    private toastr: ToastrService,
+    private diamondsSerivse: DiamondsService
+  ) {}
 
   ngOnInit() {}
   addVideo() {
@@ -29,6 +34,13 @@ export class AddVideoComponent implements OnInit {
           console.log(res);
         },
         err => {
+          if (err.status === 200) {
+            this.success = err.error.text;
+            this.showSuccess();
+          } else {
+            this.error = err.error;
+            this.showError();
+          }
           console.log(err);
         }
       );
@@ -36,5 +48,15 @@ export class AddVideoComponent implements OnInit {
       // do whatever you do...
       // subscribe to observable to listen for response
     }
+  }
+  showSuccess() {
+    this.toastr.success(`${this.success}`, "Success!", {
+      timeOut: 3000
+    });
+  }
+  showError() {
+    this.toastr.error(`${this.error}`, "Error!", {
+      timeOut: 3000
+    });
   }
 }

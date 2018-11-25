@@ -1,34 +1,47 @@
+<div class="container-fluid">
+  <div class="row mt-5 justify-content-md-center">
+    <div>
+      <div class="form-inline">
+        <div class="form-group mx-sm-3 mb-2">
+          <label for="inputPassword2" class="mr-2">Select Manufacturers</label>
 
-  <div class="form-inline">
-    <div class="form-group mx-sm-3 mb-2">
-      <label for="inputPassword2" class="mr-2">Select Manufacturers</label>
-
-      <div class="btn-group" dropdown>
-        <button
-          id="button-basic"
-          dropdownToggle
-          type="button"
-          class="btn btn-primary dropdown-toggle"
-          aria-controls="dropdown-basic"
-        >
-          Button dropdown <span class="caret"></span>
-        </button>
-        <ul
-          id="dropdown-basic"
-          *dropdownMenu
-          class="dropdown-menu"
-          role="menu"
-          aria-labelledby="button-basic"
-        >
-          <li role="menuitem" *ngFor="let manufacture of manufacturers">
-            <a class="dropdown-item" (click)="getManufacture(manufacture.id)">{{ manufacture.name }}</a>
-          </li>
-        </ul>
+          <div class="btn-group" dropdown>
+            <button
+              id="button-basic"
+              dropdownToggle
+              type="button"
+              class="btn btn-primary dropdown-toggle"
+              aria-controls="dropdown-basic"
+            >
+              Button dropdown <span class="caret"></span>
+            </button>
+            <ul
+              id="dropdown-basic"
+              *dropdownMenu
+              class="dropdown-menu"
+              role="menu"
+              aria-labelledby="button-basic"
+            >
+              <li role="menuitem" *ngFor="let manufacture of manufacturers">
+                <a
+                  class="dropdown-item"
+                  (click)="getManufacture(manufacture.id)"
+                  >{{ manufacture.name }}</a
+                >
+              </li>
+            </ul>
+          </div>
+        </div>
       </div>
     </div>
-  </div>
-  <main>
-    <div *ngFor="
-    let video of videosList"></div>
-  </main>
-
+ 
+      <main class="row">
+        <div
+          *ngFor="let video of videosList"
+          class="col-lg-3 col-md-3 col-sm-2 col-xs-1"
+        >
+          <video controls name="media" src="{{video.videoLink}}"></video>
+        </div>
+      </main>
+    </div>
+</div>

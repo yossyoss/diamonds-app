@@ -1,5 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { DiamondsService } from "../diamonds.service";
+import { ToastrService } from "ngx-toastr";
 @Component({
   selector: "app-manufacturers",
   templateUrl: "./manufacturers.component.html",
@@ -8,34 +9,46 @@ import { DiamondsService } from "../diamonds.service";
 export class ManufacturersComponent implements OnInit {
   manufacturers: any;
   videosList: any = [];
-  constructor(private diamondsService: DiamondsService) {}
+  public loading = false;
+  error: String;
+  success: String;
+  constructor( private toastr: ToastrService,private diamondsService: DiamondsService) {}
 
   ngOnInit() {
+    this.loading = true;
     this.diamondsService.getManufacturers().subscribe(
       res => {
-        console.log(res);
-
+        this.loading = false;
         this.manufacturers = res;
       },
       err => {
-        console.log(err);
+        this.loading = false;
+        this.error = "Something is wrong! It seems like the server is down";
+        this.showError();
       }
     );
   }
   getManufacture(id) {
-    console.log(id);
+    this.loading = true;
     this.diamondsService.getVideoByManufacturerId(id).subscribe(
       res => {
-        console.log(res);
-        // let obj = {
-        //   additionalInfo: "test",
-        //   video: "http://techslides.com/demos/sample-videos/small.mp4"
-        // };
+        this.loading = false;    
         this.videosList = res;
       },
       err => {
-        console.log(err);
+        this.loading = false;
+        this.error = err.error;
+        this.showError();
       }
     );
   }
+  showSuccess() {
+    this.toastr.success(`${this.success}`, "Success!", {
+      timeOut: 3000
+    });
+  }
+  showError() {
+    this.toastr.error(`${this.error}`, "Error!", {
+      timeOut: 3000
+    });
 }

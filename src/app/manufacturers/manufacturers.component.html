@@ -1,5 +1,5 @@
-<div class="container-fluid">
-  <div class="row mt-5 justify-content-md-center">
+<div class="container">
+  <div class="row mt-5 justify-content-center">
     <div>
       <div class="form-inline">
         <div class="form-group mx-sm-3 mb-2">
@@ -10,10 +10,10 @@
               id="button-basic"
               dropdownToggle
               type="button"
-              class="btn btn-primary dropdown-toggle"
+              class="btn btn-light dropdown-toggle"
               aria-controls="dropdown-basic"
             >
-              Button dropdown <span class="caret"></span>
+              Click here <span class="caret"></span>
             </button>
             <ul
               id="dropdown-basic"
@@ -34,14 +34,28 @@
         </div>
       </div>
     </div>
- 
-      <main class="row">
-        <div
-          *ngFor="let video of videosList"
-          class="col-lg-3 col-md-3 col-sm-2 col-xs-1"
-        >
-          <video controls name="media" src="{{video.videoLink}}"></video>
-        </div>
-      </main>
-    </div>
+
+    <main class="row">
+      <div
+        *ngFor="let video of videosList"
+        class="col-lg-6 col-md-6 col-sm-12 col-xs-12"
+      >
+        <video
+          controls
+          name="media"
+          class="video"
+          src="{{video.videoLink}}"
+        ></video>
+      </div>
+    </main>
+  </div>
 </div>
+<ngx-loading
+  [show]="loading"
+  [config]="{
+    backdropBorderRadius: '3px',
+    primaryColour: '#dd0031',
+    secondaryColour: '#006ddd',
+    tertiaryColour: '#dd0031'
+  }"
+></ngx-loading>

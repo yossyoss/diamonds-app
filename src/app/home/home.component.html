@@ -1,5 +1,5 @@
 <div class="container">
-  <div class="row mt-5 justify-content-md-center">
+  <div class="row mt-5 justify-content-center">
     <div class="form-inline">
       <div class="form-group form-group mb-2 ml-0 mr-3">
         <label for="inputPassword2" class="mr-2">Enter barcode here:</label>
@@ -10,17 +10,31 @@
           [(ngModel)]="videoid"
         />
       </div>
-      <button type="submit" class="btn btn-primary mb-2" (click)="btnClicked()">
+      <button type="submit" class="btn btn-light mb-2" (click)="btnClicked()">
         Click
       </button>
     </div>
   </div>
-  <div *ngIf="video" class="mt-5 justify-content-md-center">
+  <div *ngIf="video" class="mt-5 justify-content-center">
     <h2 class="row justify-content-md-center">
       Info: {{ video.additionalInfo }}
     </h2>
     <div class="row justify-content-md-center">
-      <video controls name="media" src="{{video.video}}"></video>
+      <video
+        controls
+        class="video"
+        name="media"
+        src="{{video.videoLink}}"
+      ></video>
     </div>
   </div>
 </div>
+<ngx-loading
+  [show]="loading"
+  [config]="{
+    backdropBorderRadius: '3px',
+    primaryColour: '#dd0031',
+    secondaryColour: '#006ddd',
+    tertiaryColour: '#dd0031'
+  }"
+></ngx-loading>

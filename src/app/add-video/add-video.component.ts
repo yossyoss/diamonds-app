@@ -10,16 +10,34 @@ export class AddVideoComponent implements OnInit {
   model: any = {};
   error: String;
   success: String;
+  manufacturers: any;
+  public loading = false;
   @ViewChild("fileInput") inputEl: ElementRef;
   constructor(
     private toastr: ToastrService,
-    private diamondsSerivse: DiamondsService
+    private diamondsService: DiamondsService
   ) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.loading = true;
+    this.diamondsService.getManufacturers().subscribe(
+      res => {
+        this.loading = false;
+        this.manufacturers = res;
+      },
+      err => {
+        this.loading = false;
+        this.error = err.error;
+          this.showError();
+      }
+    );
+  }
   addVideo() {
     console.log(this.model);
     this.upload();
+  }
+  getManufacture(name) {
+    this.model.manufacture = name;
   }
   upload() {
     let inputEl: HTMLInputElement = this.inputEl.nativeElement;
@@ -27,16 +45,15 @@ export class AddVideoComponent implements OnInit {
     let formData = new FormData();
     if (fileCount > 0) {
       formData.append("file", inputEl.files.item(0));
-      console.log(formData.get("file"));
-
-      this.diamondsSerivse.uploadVideo(this.model, formData).subscribe(
-        ({result_text}) => {
-          console.log(result_text);
+      this.loading = true;
+      this.diamondsService.uploadVideo(this.model, formData).subscribe(
+        ({ result_text }: any) => {
+          this.loading = false;
           this.success = result_text;
           this.showSuccess();
         },
         err => {
-          console.log(err);
+          this.loading = false;
           this.error = err.error;
           this.showError();
         }

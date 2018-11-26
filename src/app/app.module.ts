@@ -2,6 +2,8 @@ import { BrowserModule } from "@angular/platform-browser";
 import { NgModule } from "@angular/core";
 import { BsDropdownModule } from "ngx-bootstrap";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+// import { CoreModule } from './core/core.module';
+import { NgxLoadingModule } from 'ngx-loading';
  import { ToastrModule } from 'ngx-toastr';
 import { FormsModule } from "@angular/forms";
 import { AppRoutingModule } from "./app-routing.module";
@@ -26,6 +28,7 @@ import { AddVideoComponent } from './add-video/add-video.component';
       HttpClientModule,
       BrowserAnimationsModule,
       ToastrModule.forRoot(),
+      NgxLoadingModule.forRoot({}),
       BrowserModule,
       AppRoutingModule,
       BsDropdownModule.forRoot()

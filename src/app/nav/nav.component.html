@@ -1,22 +1,30 @@
-<nav class="navbar navbar-expand-sm navbar-dark bg-dark">
-  <a class="navbar-brand" [routerLink]="['/home']">Diamonds</a>
+<h1 class="site-heading text-center text-white d-none d-lg-block">
+  <span class="site-heading-upper mb-3">TTC USA</span>
+  <span class="site-heading-lower">Video Management System</span>
+</h1>
 
-  <ul class="navbar-nav mr-auto">
-    <li class="nav-item" routerLinkActive="active">
-      <a class="nav-link" [routerLink]="['/home']">Home</a>
-    </li>
-    <li class="nav-item" routerLinkActive="active">
-      <a class="nav-link" href="#" [routerLink]="['/lists']">Manufacturers</a>
-    </li>
-    <li class="nav-item" routerLinkActive="active">
-      <a class="nav-link" href="#" [routerLink]="['/add']">Add Video</a>
-    </li>
-  </ul>
-
-  <!--
-    <form class="form-inline my-2 my-lg-0">
-      <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
-      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-    </form>
-  -->
+<nav class="navbar navbar-expand-sm navbar-dark py-lg-4" id="mainNav">
+  <div class="container">
+    <ul class="navbar-nav mx-auto">
+      <li class="nav-item px-lg-4">
+        <a
+          class="nav-link text-uppercase text-expanded"
+          [routerLink]="['/home']"
+          >Home</a
+        >
+      </li>
+      <li class="nav-item px-lg-4">
+        <a
+          class="nav-link text-uppercase text-expanded"
+          [routerLink]="['/lists']"
+          >Manufacturers</a
+        >
+      </li>
+      <li class="nav-item px-lg-4">
+        <a class="nav-link text-uppercase text-expanded" [routerLink]="['/add']"
+          >Add Video</a
+        >
+      </li>
+    </ul>
+  </div>
 </nav>

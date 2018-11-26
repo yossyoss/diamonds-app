@@ -12,7 +12,10 @@ export class ManufacturersComponent implements OnInit {
   public loading = false;
   error: String;
   success: String;
-  constructor( private toastr: ToastrService,private diamondsService: DiamondsService) {}
+  constructor(
+    private toastr: ToastrService,
+    private diamondsService: DiamondsService
+  ) {}
 
   ngOnInit() {
     this.loading = true;
@@ -32,7 +35,7 @@ export class ManufacturersComponent implements OnInit {
     this.loading = true;
     this.diamondsService.getVideoByManufacturerId(id).subscribe(
       res => {
-        this.loading = false;    
+        this.loading = false;
         this.videosList = res;
       },
       err => {
@@ -51,4 +54,5 @@ export class ManufacturersComponent implements OnInit {
     this.toastr.error(`${this.error}`, "Error!", {
       timeOut: 3000
     });
+  }
 }

@@ -1,31 +1,45 @@
-<div class="container">
-  <div class="row mt-5 justify-content-center">
-    <div class="form-inline">
-      <div class="form-group form-group mb-2 ml-0 mr-3">
-        <label for="inputPassword2" class="mr-2">Enter barcode here:</label>
-        <input
-          type="text"
-          class="form-control"
-          id="barcode"
-          [(ngModel)]="videoid"
-        />
+<div class="page-section cta">
+  <div class="container">
+    <div class="row">
+      <div class="col-xl-12 mx-auto">
+        <div class="cta-inner text-center rounded">
+          <div class="row">
+            <div class="form-inline">
+              <div class="form-group form-group mb-2 ml-0 mr-3">
+                <label for="inputPassword2" class="mr-2"
+                  >Enter barcode here:</label
+                >
+                <input
+                  type="text"
+                  class="form-control"
+                  id="barcode"
+                  [(ngModel)]="videoid"
+                />
+              </div>
+              <button
+                type="submit"
+                class="btn btn-light mb-2 click-btn"
+                (click)="btnClicked()"
+              >
+                Click
+              </button>
+            </div>
+          </div>
+          <div *ngIf="video" class="mt-5 justify-content-center">
+            <h2 class="row justify-content-md-center">
+              Info: {{ video.additionalInfo }}
+            </h2>
+            <div class="row justify-content-md-center">
+              <video
+                controls
+                class="video"
+                name="media"
+                src="{{video.videoLink}}"
+              ></video>
+            </div>
+          </div>
+        </div>
       </div>
-      <button type="submit" class="btn btn-light mb-2" (click)="btnClicked()">
-        Click
-      </button>
-    </div>
-  </div>
-  <div *ngIf="video" class="mt-5 justify-content-center">
-    <h2 class="row justify-content-md-center">
-      Info: {{ video.additionalInfo }}
-    </h2>
-    <div class="row justify-content-md-center">
-      <video
-        controls
-        class="video"
-        name="media"
-        src="{{video.videoLink}}"
-      ></video>
     </div>
   </div>
 </div>

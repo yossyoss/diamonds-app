@@ -1,0 +1,13 @@
+.click-btn,
+#barcode {
+  position: relative;
+}
+.form-inline {
+  margin-left: 25%;
+}
+@media all and(max-width:1100px) {
+  .form-inline {
+    display: block;
+    margin-left: 25%;
+  }
+}

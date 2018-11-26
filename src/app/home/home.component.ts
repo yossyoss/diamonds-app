@@ -40,3 +40,4 @@ export class HomeComponent implements OnInit {
       timeOut: 3000
     });
 }
+}

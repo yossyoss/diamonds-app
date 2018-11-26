@@ -30,23 +30,17 @@ export class AddVideoComponent implements OnInit {
       console.log(formData.get("file"));
 
       this.diamondsSerivse.uploadVideo(this.model, formData).subscribe(
-        res => {
-          console.log(res);
+        ({result_text}) => {
+          console.log(result_text);
+          this.success = result_text;
+          this.showSuccess();
         },
         err => {
-          if (err.status === 200) {
-            this.success = err.error.text;
-            this.showSuccess();
-          } else {
-            this.error = err.error;
-            this.showError();
-          }
           console.log(err);
+          this.error = err.error;
+          this.showError();
         }
       );
-
-      // do whatever you do...
-      // subscribe to observable to listen for response
     }
   }
   showSuccess() {

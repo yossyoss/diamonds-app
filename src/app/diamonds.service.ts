@@ -9,7 +9,7 @@ import { Observable, Subject } from "rxjs";
   providedIn: "root"
 })
 export class DiamondsService {
-  baseUrl = "http://localhost:8080/diamonds";
+  baseUrl = "http://localhost:8081/diamonds";
 
   constructor(private http: HttpClient) {}
 

@@ -39,7 +39,7 @@
           </div>
         </div>
 
-        <main class="row">
+        <main class="row" *ngIf="showVideos">
           <div
             *ngFor="let video of videosList"
             class="col-lg-6 col-md-6 col-sm-12 col-xs-12"
@@ -56,13 +56,10 @@
     </div>
   </div>
 </div>
-
+<app-footer></app-footer>
 <ngx-loading
   [show]="loading"
   [config]="{
-    backdropBorderRadius: '3px',
-    primaryColour: '#dd0031',
-    secondaryColour: '#006ddd',
-    tertiaryColour: '#dd0031'
+    backdropBorderRadius: '10px'
   }"
 ></ngx-loading>

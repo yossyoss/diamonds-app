@@ -10,8 +10,12 @@ export class HomeComponent implements OnInit {
   videoid: String;
   error: String;
   success: String;
+  showVideo: Boolean = false;
   video: {};
-  constructor( private toastr: ToastrService,private diamondsService: DiamondsService) {}
+  constructor(
+    private toastr: ToastrService,
+    private diamondsService: DiamondsService
+  ) {}
   public loading = false;
   ngOnInit() {}
 
@@ -20,11 +24,12 @@ export class HomeComponent implements OnInit {
     this.diamondsService.getVideoByVideoId(this.videoid).subscribe(
       res => {
         this.loading = false;
-        console.log(res);
+        this.showVideo = true;
         this.video = res;
       },
       err => {
         this.loading = false;
+        this.showVideo = false;
         this.error = err.error;
         this.showError();
       }
@@ -39,5 +44,5 @@ export class HomeComponent implements OnInit {
     this.toastr.error("Something is wrong!", "Error!", {
       timeOut: 3000
     });
-}
+  }
 }

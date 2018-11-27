@@ -123,7 +123,6 @@ p {
 .cta {
   padding-top: 5rem;
   padding-bottom: 5rem;
-  background-color: rgba(21, 21, 21, 0.55);
 }
 .cta .cta-inner {
   position: relative;
@@ -231,7 +230,6 @@ p {
   .container {
     padding: 1em;
   }
-
 }
 router-outlet ~ * {
   position: absolute;
@@ -247,7 +245,7 @@ body {
       linear,
       0% 0%,
       0% 100%,
-      from(rgba(39, 21, 19, 0.65))
+      from(rgba(12, 12, 12, 0.61))
     ),
     url(./assets/diamonds.jpg);
   background-attachment: fixed;

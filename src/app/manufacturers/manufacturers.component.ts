@@ -12,6 +12,7 @@ export class ManufacturersComponent implements OnInit {
   public loading = false;
   error: String;
   success: String;
+  showVideos: Boolean = false;
   constructor(
     private toastr: ToastrService,
     private diamondsService: DiamondsService
@@ -36,10 +37,12 @@ export class ManufacturersComponent implements OnInit {
     this.diamondsService.getVideoByManufacturerId(id).subscribe(
       res => {
         this.loading = false;
+        this.showVideos = true;
         this.videosList = res;
       },
       err => {
         this.loading = false;
+        this.showVideos = false;
         this.error = err.error;
         this.showError();
       }

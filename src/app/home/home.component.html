@@ -25,7 +25,7 @@
               </button>
             </div>
           </div>
-          <div *ngIf="video" class="mt-5 justify-content-center">
+          <div *ngIf="showVideo" class="mt-5 justify-content-center">
             <h2 class="row justify-content-md-center">
               Info: {{ video.additionalInfo }}
             </h2>
@@ -43,12 +43,10 @@
     </div>
   </div>
 </div>
+<app-footer></app-footer>
 <ngx-loading
   [show]="loading"
   [config]="{
-    backdropBorderRadius: '3px',
-    primaryColour: '#dd0031',
-    secondaryColour: '#006ddd',
-    tertiaryColour: '#dd0031'
+    backdropBorderRadius: '3px'
   }"
 ></ngx-loading>

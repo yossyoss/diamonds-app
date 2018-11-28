@@ -27,7 +27,7 @@ export class ManufacturersComponent implements OnInit {
       },
       err => {
         this.loading = false;
-        this.error = "Something went wrong! It seems like the server is down";
+        this.error = "It seems like the server is down";
         this.showError();
       }
     );
@@ -54,7 +54,7 @@ export class ManufacturersComponent implements OnInit {
     });
   }
   showError() {
-    this.toastr.error(`${this.error}`, "Error!", {
+    this.toastr.error(`${this.error}`, "Something went wrong!", {
       timeOut: 3000
     });
   }

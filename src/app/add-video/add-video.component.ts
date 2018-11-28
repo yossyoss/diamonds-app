@@ -28,8 +28,8 @@ export class AddVideoComponent implements OnInit {
         this.manufacturers = res;
       },
       err => {
-        this.loading = false;
-        this.error = err.error;
+        this.loading = false;        
+        this.error = "It seems like the server is down";
           this.showError();
       }
     );
@@ -73,7 +73,7 @@ export class AddVideoComponent implements OnInit {
     });
   }
   showError() {
-    this.toastr.error(`${this.error}`, "Error!", {
+    this.toastr.error(`${this.error}`, "Something went wrong!", {
       timeOut: 3000
     });
   }

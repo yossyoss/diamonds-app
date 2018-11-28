@@ -20,6 +20,9 @@ export class HomeComponent implements OnInit {
   ngOnInit() {}
 
   btnClicked() {
+    if (this.videoid === undefined) {
+      return;
+    }
     this.loading = true;
     this.diamondsService.getVideoByVideoId(this.videoid).subscribe(
       res => {
@@ -34,7 +37,7 @@ export class HomeComponent implements OnInit {
         if (err.status === 404 ) {
           this.error = "Jewelry not found!";
         } else {
-          this.error = "Something went wrong! It seems like the server is down";
+          this.error = "It seems like the server is down";
         } 
         this.showError();
       }
@@ -46,7 +49,7 @@ export class HomeComponent implements OnInit {
     });
   }
   showError() {
-    this.toastr.error(`${this.error}`, "Error!", {
+    this.toastr.error(`${this.error}`, "Something went wrong!", {
       timeOut: 3000
     });
   }

@@ -23,6 +23,8 @@ export class AddVideoComponent implements OnInit {
     this.diamondsService.getManufacturers().subscribe(
       res => {
         this.loading = false;
+        console.log(res);
+        
         this.manufacturers = res;
       },
       err => {
@@ -36,8 +38,8 @@ export class AddVideoComponent implements OnInit {
     console.log(this.model);
     this.upload();
   }
-  getManufacture(name) {
-    this.model.manufacture = name;
+  setManufacture(id) {
+    this.model.manufacture = id;
   }
   upload() {
     let inputEl: HTMLInputElement = this.inputEl.nativeElement;

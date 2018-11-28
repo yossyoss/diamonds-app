@@ -26,7 +26,7 @@
                   <li role="menuitem" *ngFor="let manufacture of manufacturers">
                     <a
                       class="dropdown-item"
-                      (click)="getManufacture(manufacture.name)"
+                      (click)="setManufacture(manufacture.id)"
                       >{{ manufacture.name }}</a
                     >
                   </li>

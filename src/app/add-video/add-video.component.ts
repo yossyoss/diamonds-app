@@ -38,8 +38,8 @@ export class AddVideoComponent implements OnInit {
     console.log(this.model);
     this.upload();
   }
-  setManufacture(id) {
-    this.model.manufacture = id;
+  setManufacture(manufacture) {
+    this.model.manufacturer = manufacture;
   }
   upload() {
     let inputEl: HTMLInputElement = this.inputEl.nativeElement;
@@ -48,7 +48,12 @@ export class AddVideoComponent implements OnInit {
     if (fileCount > 0) {
       formData.append("file", inputEl.files.item(0));
       this.loading = true;
-      this.diamondsService.uploadVideo(this.model, formData).subscribe(
+      const obj = {
+        barcode: this.model.barcode,
+        manufacturer: this.model.manufacturer.id,
+        additionalInfo: this.model.additionalInfo,
+      }
+      this.diamondsService.uploadVideo(obj, formData).subscribe(
         ({ result_text }: any) => {
           this.loading = false;
           this.success = result_text;

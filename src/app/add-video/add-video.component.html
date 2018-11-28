@@ -26,7 +26,7 @@
                   <li role="menuitem" *ngFor="let manufacture of manufacturers">
                     <a
                       class="dropdown-item"
-                      (click)="setManufacture(manufacture.id)"
+                      (click)="setManufacture(manufacture)"
                       >{{ manufacture.name }}</a
                     >
                   </li>
@@ -34,8 +34,8 @@
               </div>
             </div>
             <div class="form-group" required>
-              <div class="form-control" *ngIf="model && model.manufacture">
-                {{ model.manufacture }}
+              <div class="form-control" *ngIf="model && model.manufacturer">
+                {{ model.manufacturer.name }}
               </div>
             </div>
             <div class="form-group">

@@ -28,12 +28,17 @@ export class HomeComponent implements OnInit {
         this.video = res;
       },
       err => {
+        console.log(err);        
         this.loading = false;
         this.showVideo = false;
-        this.error = err.error;
+        if (err.status === 404 ) {
+          this.error = "Jewelry not found!";
+        } else {
+          this.error = "Something went wrong! It seems like the server is down";
+        } 
         this.showError();
       }
-    );
+    ); 
   }
   showSuccess() {
     this.toastr.success(`${this.success}`, "Success!", {
@@ -41,7 +46,7 @@ export class HomeComponent implements OnInit {
     });
   }
   showError() {
-    this.toastr.error("Something is wrong!", "Error!", {
+    this.toastr.error(`${this.error}`, "Error!", {
       timeOut: 3000
     });
   }

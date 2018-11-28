@@ -27,7 +27,7 @@ export class ManufacturersComponent implements OnInit {
       },
       err => {
         this.loading = false;
-        this.error = "Something is wrong! It seems like the server is down";
+        this.error = "Something went wrong! It seems like the server is down";
         this.showError();
       }
     );

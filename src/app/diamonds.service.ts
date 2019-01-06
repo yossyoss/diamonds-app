@@ -26,6 +26,13 @@ export class DiamondsService {
       }/findJewelryByManufacturer?manufacturerId=${manufacturerId}`
     );
   }
+  getCustomersByManufacturer(manufacturerId) {
+    return this.http.get(
+      `${
+        this.baseUrl
+      }/getCustomersByManufacturer?manufacturerId=${manufacturerId}`
+    );
+  }
   uploadVideo(jewelry, file) {
     console.log("uploading");
 

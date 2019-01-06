@@ -15,26 +15,29 @@ import { HttpClientModule } from "@angular/common/http";
 import { ManufacturersComponent } from "./manufacturers/manufacturers.component";
 import { AddVideoComponent } from "./add-video/add-video.component";
 import { FooterComponent } from "./footer/footer.component";
+import { CustomersComponent } from './customers/customers.component';
 @NgModule({
-  declarations: [
-    AppComponent,
-    NavComponent,
-    HomeComponent,
-    ManufacturersComponent,
-    AddVideoComponent,
-    AddVideoComponent,
-    FooterComponent
-  ],
-  imports: [
-    FormsModule,
-    HttpClientModule,
-    BrowserAnimationsModule,
-    ToastrModule.forRoot(),
-    NgxLoadingModule.forRoot({}),
-    BrowserModule,
-    AppRoutingModule,
-    BsDropdownModule.forRoot()
-  ],
+   declarations: [
+      AppComponent,
+      NavComponent,
+      HomeComponent,
+      ManufacturersComponent,
+      AddVideoComponent,
+      AddVideoComponent,
+      FooterComponent,
+      CustomersComponent
+   ],
+   imports: [
+      FormsModule,
+      HttpClientModule,
+      BrowserAnimationsModule,
+      ToastrModule.forRoot(),
+      NgxLoadingModule.forRoot({}),
+      BrowserModule,
+      AppRoutingModule,
+      BsDropdownModule.forRoot()
+   ]
+,
   providers: [DiamondsService],
   bootstrap: [AppComponent]
 })

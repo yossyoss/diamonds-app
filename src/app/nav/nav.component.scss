@@ -1,3 +1,10 @@
+.site-heading-upper{
+  display: inline-block;
+}
+.site-heading-lower{
+  display: block
+}
+
 @media all and (max-width: 500px) {
   .navbar-brand {
     visibility: hidden;

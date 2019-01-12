@@ -7,7 +7,7 @@ import { CustomersComponent } from "./customers/customers.component";
 
 const routes: Routes = [
   { path: "home", component: HomeComponent },
-  { path: "customers", component: CustomersComponent },
+  { path: "customers/:manufacturerId", component: CustomersComponent },
   { path: "lists", component: ManufacturersComponent },
   { path: "add", component: AddVideoComponent },
   { path: "**", redirectTo: "home", pathMatch: "full" }

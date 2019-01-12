@@ -1,67 +1,46 @@
+<h1 class="site-heading text-center text-white d-none d-lg-block">
+  <span class="site-heading-upper mb-3">Diamond Services USA</span>
+  <img src="/assets/flawless-diamond2.png" />
+  <span class="site-heading-lower">Video Management System</span>
+</h1>
 <div class="page-section cta">
   <div class="container">
     <div class="row">
       <div class="col-xl-12 mx-auto">
         <div class="cta-inner text-center rounded">
           <div class="btn-group" dropdown>
-            <button
-              id="button-basic"
-              dropdownToggle
-              type="button"
-              class="btn dropdown-toggle"
-              aria-controls="dropdown-basic"
-            >
-              Select manufacture <span class="caret"></span>
-            </button>
-
-            <ul
-              id="dropdown-basic"
-              *dropdownMenu
-              class="dropdown-menu"
-              role="menu"
-              aria-labelledby="button-basic"
-            >
-              <li role="menuitem" *ngFor="let manufacture of manufacturers">
-                <a
-                  class="dropdown-item"
-                  (click)="getManufacture(manufacture.id)"
-                  >{{ manufacture.name }}</a
-                >
-              </li>
-            </ul>
+            <h3>
+              <strong *ngIf="manufacturer">{{ manufacturer.name | titlecase}}</strong>
+            </h3>
           </div>
-          <main class="row" *ngIf="showCustomers">
-              <div                
-                class="col-xs-12"
-              >              
+          <main class="row main-row" *ngIf="showCustomers">
+            <div class="col-xs-12">
               <table class="table">
-                  <thead>
-                    <tr>
-                      <th scope="col">#</th>
-                      <th scope="col">name</th>
-                      <th scope="col">email</th>
-                      <th scope="col">phone</th>
-                      <th scope="col">barcode</th>
-                      <!-- <th scope="col">video Url</th> -->
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr *ngFor="let customer of customersList let i = index">
-                        <th scope="row">{{i+1}}</th>
-                        <td>{{customer.name}}</td>
-                        <td>{{customer.email}}</td>
-                        <td>{{customer.phone}}</td>
-                        <td>{{customer.barcode}}</td>
-                        <!-- <td>{{customer.videoUrl}}</td> -->
-                      </tr>
-                    </tbody>
-                  </table>
-          </div>
-              </main>
+                <thead>
+                  <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">name</th>
+                    <th scope="col">email</th>
+                    <th scope="col">phone</th>
+                    <th scope="col">barcode</th>
+                    <!-- <th scope="col">video Url</th> -->
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let customer of customersList; let i = index">
+                    <th scope="row">{{ i + 1 }}</th>
+                    <td>{{ customer.name }}</td>
+                    <td>{{ customer.email }}</td>
+                    <td>{{ customer.phone }}</td>
+                    <td>{{ customer.barcode }}</td>
+                    <!-- <td>{{customer.videoUrl}}</td> -->
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </main>
         </div>
       </div>
-      
-
     </div>
   </div>
 </div>
